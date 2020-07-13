@@ -1,0 +1,13 @@
+.user-container {
+	width: 80% !important;
+	margin: 0 auto;
+}
+.addemp {
+	margin: 0 auto;
+	right: 0px;
+	text-align: right;
+	padding: 8px 0px;
+}
+.table td, .table th {
+	padding: 5px;
+}

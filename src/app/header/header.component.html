@@ -1,0 +1,17 @@
+<header>
+    <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
+      <div *ngIf="authService.isUserLoggedIn() && retrievedImage">
+        <img  class="img" [src]="retrievedImage">
+    </div>
+    <div style="margin-left: 5px;"><a href="/upload" class="navbar-brand">Simhadri</a></div>    
+    <ul class="navbar-nav">
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/home" class="nav-link">Home</a></li>
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/viewemployee" class="nav-link">View Employees</a></li>
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/posts" class="nav-link">Posts</a></li>
+    </ul>
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout" class="nav-link signout"><img src="assets/images/log_icon_1.png" class="img" > LogOut</a>        
+      </li>
+    </ul>    
+    </nav>  
+    </header> 

@@ -1,0 +1,37 @@
+
+<div class="wrapper">
+    <h1>Post Message</h1>
+    <form #postForm="ngForm" (ngSubmit)="submit()">       
+        <textarea name="msg" id="msg" [(ngModel)]="postMsg.msg"  #msg="ngModel"class="form-control" maxlength="300" placeholder="Start Typin..." required ></textarea>
+        <div class="alert alert-danger" *ngIf="msg.touched && !msg.valid">
+            <div *ngIf="msg.errors.required">Post Message is required.</div>            
+        </div>
+        <input type="hidden" name="userId" id="userId" [(ngModel)]="postMsg.userId" class="form-control"/>
+        <div id="the-count">
+            <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">Post</button> <button  type="reset" class="btn btn-primary" (click)="reset()" style="margin-left: 20px;margin-right: 20px;">Cancel</button>
+        <span id="current" >0</span>
+        <span id="maximum">/300</span>
+        </div>
+    </form> 
+</div>
+
+<br/>
+<div class="col-md-10 user-container">
+  <h2 style="margin: auto"> Posts</h2>
+  
+    <div class="mat-table">
+        <div *ngFor="let postMsg of postMsgs" class="mat-row">
+            <app-list-posts [postMsg]="postMsg" ></app-list-posts>
+            
+        </div>
+</div>
+<div *ngIf="postMsgs.length > 0">
+      <mat-paginator  [pageSizeOptions]="[5,10, 25, 100]" [pageSize]="5" [length]="totalElements"
+      (page)="nextPage($event)">
+
+    </mat-paginator>
+</div>
+    </div>
+
+
+

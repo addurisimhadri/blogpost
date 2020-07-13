@@ -1,0 +1,32 @@
+<div class="container ">
+    <form (ngSubmit)="onUpload()">
+        <!-- Progress Bar -->
+        <div class="uploadfile">
+        
+        
+        <div class="form-group ">
+            <label for="add" class=" col-control-label">Profile Image</label>
+            <div class="progress form-group" *ngIf="progress > 0">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+                </div>
+            </div>
+            <div  >
+                <input type="file"(change)="onFileChanged($event)" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-success">Upload</button>
+        </div>
+
+        <div *ngIf=message>{{message}}</div>
+    </div>
+    </form>
+    <div class="uploadfile1">
+    <div *ngIf=retrievedImage>
+        <img [src]="retrievedImage">
+    </div>
+    </div>
+</div>
+
+

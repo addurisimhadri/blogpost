@@ -1,0 +1,13 @@
+.container {
+	width: 50% !important;
+    margin: 0 auto;
+    background: whitesmoke;
+}
+.uploadfile{
+    width: 34% !important;
+    margin: 0 auto;
+}
+.uploadfile1{
+    width: 55% !important;
+    margin: 0 auto;
+}

@@ -1,0 +1,36 @@
+<br/>
+<div class="col-md-10 user-container">
+  <h2 style="margin: auto"> Employee Details</h2>
+  <div class="addemp">
+  <button class="btn btn-danger" style="width:100px" (click)="addEmployee()"> Add User</button>
+  </div>
+    <table class="table table-bordered mat-table">
+    <thead>
+    <tr class="mat-header-row">
+      <th scope="col mat-header-cell">name</th>
+      <th scope="col mat-header-cell">designation</th>
+      <th scope="col mat-header-cell">Salary</th>
+      <th scope="col mat-header-cell">Email Id</th>
+      <th scope="col mat-header-cell">Address</th>
+      <th scope="col mat-header-cell">Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees" class="mat-row">
+            <td class="mat-cell" scope="row">{{employee.ename}}</td>
+            <td class="mat-cell">{{employee.designation}}</td>
+            <td class="mat-cell">{{employee.salary}}</td>
+            <td class="mat-cell">{{employee.email}}</td>
+            <td class="mat-cell">{{employee.add}}</td>
+            <td class="mat-cell">            
+            <button class="btn btn-success" (click)="editEmployee(employee)" > Edit</button>
+            <button class="btn btn-success" (click)="deleteEmployee(employee)" style="margin-left: 20px;"> Delete</button>
+          </td>
+            </tr>
+    </tbody>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5,10, 25, 100]" [pageSize]="5" [length]="totalElements"
+      (page)="nextPage($event)">
+
+  </mat-paginator>
+    </div>
