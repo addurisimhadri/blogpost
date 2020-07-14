@@ -13,18 +13,19 @@ export class User{
 export class AuthenticationService {
   @Output() getLoggedInUserId: EventEmitter<any> = new EventEmitter();
   //web_url : any="http://dev.wicore.in:8080";
-  web_url : any="http://localhost:2018";
+  web_url : any="http://localhost:2020";
   constructor(private httpClient:HttpClient) { }
 
   authenticate(loginPayload) {
     //alert(loginPayload.username+""+loginPayload.password);
     let username=loginPayload.username;
     let password=loginPayload.password;
+    //alert("==========="+username);   
     return this.httpClient
       .post<any>(this.web_url+"/cmsapi/authenticate", { username, password})
       .pipe(
         map(userData => {
-          //alert("===========");
+         // alert("===========");          
           this.getLoggedInUserId.emit(userData.userId);
           sessionStorage.setItem("web_url", this.web_url);
           sessionStorage.setItem("username", userData.token);
@@ -33,16 +34,16 @@ export class AuthenticationService {
           sessionStorage.setItem("userId", userData.userId);
           console.log("userId::"+userData.userId+" | tokenStr::  "+tokenStr); 
           return userData;
-        })      );
+        })
+        ); 
   }
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
     console.log(!(user === null))
     return !(user === null)
   }
-  logOut() { 
+  logOut() {
     sessionStorage.removeItem('username')
     sessionStorage.removeItem('userId')
   }
-  
 }

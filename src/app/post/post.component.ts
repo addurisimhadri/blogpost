@@ -11,7 +11,7 @@ declare var jQuery: any;
 export class PostComponent implements OnInit {
   postMsgs:PostMsg[]=[];
   
-  postMsg:PostMsg = new PostMsg("","","","","");
+  postMsg:PostMsg = new PostMsg("","","","","","","",""); 
   totalElements: number = 0;
   loading: boolean;
   parentMessage = "message from parent"
@@ -84,8 +84,8 @@ export class PostComponent implements OnInit {
     this.postserviceService.getPostMsgs(request)
     .subscribe(
      response =>{
-       this.postMsgs = response.result['content'];
-       this.totalElements = response.result['totalElements'];
+       this.postMsgs = response.content;
+       this.totalElements = response.totalItems;
        this.loading = false;
       }, error => {
         this.loading = false;

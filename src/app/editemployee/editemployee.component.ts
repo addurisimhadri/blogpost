@@ -16,7 +16,7 @@ export class EditemployeeComponent implements OnInit {
     let editEmpId = window.localStorage.getItem("editEmpId");
     if(!editEmpId) {
       alert("Invalid action.")
-      this.router.navigate(['']);
+      this.router.navigate(['viewemployee']);
       return;
     }
     this.employeeserviceService.getEmployeeById(editEmpId)
@@ -29,10 +29,10 @@ export class EditemployeeComponent implements OnInit {
     this.employeeserviceService.updateEmployee(this.employee)
         .subscribe( data => {
           alert(data.message);
-          this.router.navigate([''])
+          this.router.navigate(['viewemployee'])
         });
   };
   cancel(): void {   
-          this.router.navigate([''])
+          this.router.navigate(['viewemployee'])
   };
 }

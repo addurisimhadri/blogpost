@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
     })
     export class InterceptorService implements HttpInterceptor{
      constructor() { }
-     /*handleError(error: HttpErrorResponse){
+     handleError(error: HttpErrorResponse){
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
           // client-side error
@@ -21,7 +21,7 @@ import { Injectable } from '@angular/core';
         }
         window.alert(errorMessage);      
       return throwError(error);
-     }*/
+     }
     intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>>{
       let token = sessionStorage.getItem("token");
